@@ -395,7 +395,35 @@
   <p>Use the browser back button to go to the previous view.</p>
 
   <div class="stepper simple">
-    <section [hidden]="currentPage > 0">
+
+      <section [hidden]="currentPage > 0">          
+          <div class="content">
+              <div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+              <div>
+                <label for="ip1" aria-hidden="true">Enter your Name</label>
+                <input type="firstname" value="" name="firstname" autocomplete="firstname" id="id1" placeholder="Enter your Name"
+                          on="input-debounced: AMP.setState({ firstname: event.value })">                
+              </div>
+
+            <button on="tap:AMP.pushState({ currentPage: currentPage + 1 })"
+                    disabled [disabled]="!firstname">
+              continue
+            </button>
+          </div>
+          <div class="bottom-bar">
+            <div class="step-dots">
+              <i class="step-dot active"></i>
+              <i class="step-dot"></i>
+              <i class="step-dot"></i>
+              <i class="step-dot"></i>
+            </div>
+          </div>
+        </section>
+
+
+    <section hidden [hidden]="currentPage != 1">
       <div class="top-bar">
         Pytanie 1
       </div>
@@ -425,7 +453,7 @@
     </section>
 
 
-    <section hidden [hidden]="currentPage != 1">
+    <section hidden [hidden]="currentPage != 2">
       <div class="top-bar">
         Pytanie 2
       </div>
@@ -454,8 +482,7 @@
       </div>
     </section>
 
-
-    <section hidden [hidden]="currentPage != 2">
+    <section hidden [hidden]="currentPage != 3">
       <div class="top-bar">
         Pytanie 3
       </div>
@@ -484,7 +511,7 @@
       </div>
     </section>
 
-    <section hidden [hidden]="currentPage != 3">
+    <section hidden [hidden]="currentPage != 4">
         <div class="top-bar">
           Pytanie 4
         </div>
@@ -513,7 +540,7 @@
         </div>
       </section>
 
-      <section hidden [hidden]="currentPage != 4">
+      <section hidden [hidden]="currentPage != 5">
           <div class="top-bar">
             Pytanie 5
           </div>
@@ -543,7 +570,7 @@
         </section>
 
     
-    <section hidden [hidden]="currentPage != 5">
+    <section hidden [hidden]="currentPage != 6">
       <div class="top-bar">
         Wynik
       </div>
