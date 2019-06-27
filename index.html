@@ -103,6 +103,81 @@
   font-weight: 500;
 }
 
+
+/* Vertical Stepper */
+.stepper.vertical {
+  display: flex;
+  flex-direction: column;
+}
+.stepper.vertical .step-title {
+  padding: var(--space-1);
+  font-size: var(--space-2);
+  display: block;
+  border: none;
+  line-height: var(--space-3);
+  text-align: left;
+}
+.stepper.vertical .step-title:not([disabled]):active {
+  background-color: #ccc;
+}
+.stepper.vertical .step-title:not([disabled]) {
+  cursor: pointer;
+}
+.stepper.vertical .step-title.step-active {
+  background-color: #f2f2f2;
+  font-weight: 700;
+}
+.stepper.vertical .step-title i {
+  display: inline-block;
+  width: var(--space-3);
+  height: var(--space-3);
+  margin: var(--space-1);
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  color: white;
+  font-size: 14px;
+  font-style: normal;
+  transition: background 0.25s ease-in-out;
+}
+.stepper.vertical .step-title[disabled] .step-incomplete {
+  background-color: #ccc;
+}
+.stepper.vertical .step-title .step-incomplete:before {
+  content: attr(data-step-nr);
+  display: block;
+  text-align: center;
+  font-weight: 700;
+}
+.stepper.vertical .step-title .step-complete:before {
+  content: "✓";
+  display: block;
+  text-align: center;
+  font-weight: 700;
+}
+.stepper.vertical .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-2);
+  margin-left: var(--space-4);
+}
+.stepper.vertical .content > *:nth-child(n+2) {
+  margin-top: var(--space-2);
+}
+.stepper.vertical .content button {
+  color: #fff;
+  background: var(--color-primary);
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  padding: .5em .8em;
+}
+.stepper.vertical .content button[disabled] {
+  opacity: .5;
+  outline: 0;
+  cursor: default;
+}
+
 /* Survey styling */
 amp-selector.poll [option][selected] {
   outline: none;
