@@ -381,6 +381,16 @@
 </head>
 <body>
 
+    <amp-state id="qa">
+        <script type="application/json">
+          {
+            "step1": {
+              "correct": "cat"
+            }
+          }
+        </script>
+      </amp-state>
+
   <h2 class="preview-only">A simple mobile Stepper</h2>
   <p>Use the browser back button to go to the previous view.</p>
 
@@ -393,7 +403,7 @@
       </div>
       <div class="content">
         <p>What's your favorite animal?</p>
-        <amp-selector on="select:AMP.setState({
+        <amp-selector id="step1" on="select:AMP.pushState({
           step1Selected: true,
           step1Value: event.targetOption
         })" class="poll" name="animal-poll">
@@ -423,7 +433,7 @@
       </div>
       <div class="content">
         <p>What's your favorite color?</p>
-        <amp-selector on="select:AMP.setState({
+        <amp-selector id="step2" on="select:AMP.setState({
           step2Selected: true,
           step2Value: event.targetOption})" class="poll" name="color-poll">
           <div option="blue">Blue</div>
@@ -453,7 +463,7 @@
       </div>
       <div class="content">
         <p>What's your favorite color?</p>
-        <amp-selector on="select:AMP.setState({
+        <amp-selector id="step3" on="select:AMP.setState({
           step3Selected: true,
           step3Value: event.targetOption})" class="poll" name="color-poll">
           <div option="blue">Blue</div>
@@ -487,9 +497,14 @@
           <h1 class="preview-only">Test results</h1>
           <h2>Hi #USER, your score is: 100%</h2>
           <br />
-          <h2><a href="pets.html">Try again?</a></h2>
+          <button class="button-again" on="tap:
+          step1.clear, step2.clear, step3.clear,
+          AMP.pushState({ 
+            currentPage: 0
+          })">Try again?</button>
           <br />
           <p class="bottom">Share your results:</p>
+          <p [text]="'Hello ' + qa.step1User">Hello World</p>
           <amp-social-share type="linkedin" width="60" height="44"
           data-param-text="Hello world"
           data-param-url="https://example.com/">
