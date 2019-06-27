@@ -379,8 +379,51 @@ html, body {
 }
 </style>
 <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+<script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
 </head>
 <body>
+        <amp-animation id="snackbarSlideIn" layout="nodisplay">
+                <script type="application/json">
+                  [{
+                    "duration": "3s",
+                    "fill": "both",
+                    "easing": "ease-out",
+                    "iterations": "1",
+                    "selector": ".snackbar",
+                    "keyframes": [{
+                        "transform": "translateY(100%)"
+                      },
+                      {
+                        "transform": "translateY(0)", "offset": 0.1
+                      },
+                      {
+                        "transform": "translateY(0)", "offset": 0.9
+                      },
+            
+                      {
+                        "transform": "translateY(100%)"
+                      }
+                    ]
+                  }
+                  ]
+                </script>
+              </amp-animation>
+            
+              <!-- ## The snackbar -->
+              <!-- Our snackbar is a `div` containing the message. It's going to disappear after a few seconds so we don't provide any additional buttons to manually hide the snackbar. The text message is bound to an `amp-state` variable to make it's content configurable. This is not needed if the snackbar should always show the same message. -->
+              <div class="snackbar" [text]="message">
+                Hello World
+              </div>
+            
+              <!-- ## The trigger -->
+              <!-- The snackbar animation is triggered via the `restart` action: `on="tap:snackbarSlideIn.restart"`. We use the `restart` action to make it possible to override an already active animation. The input field simply updates the `amp-state` variable containing the snackbar's message. -->
+              <div class="trigger">
+                <input on="input-debounced:AMP.setState({message: event.value})" value="Hello World">
+                <button on="tap:snackbarSlideIn.restart">
+                  Show Snackbar
+                </button>
+              </div>
     <amp-img src="assets/exam.png" width="200" height="200" layout="responsive">
                 </amp-img>
     <h1 class="preview-only">Test results</h1>
@@ -401,5 +444,7 @@ html, body {
     data-param-text="Hello world"
     data-param-url="https://example.com/">
     </amp-social-share>
+
+    
 </body>
 </html>
