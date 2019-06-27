@@ -495,7 +495,7 @@
           <amp-img src="assets/exam.png" width="100px" height="100px" layout="fixed">
           </amp-img>
           <h1 class="preview-only">Test results</h1>
-          <h2>Hi #USER, your score is: 100%</h2>
+          <h2 [text]="'Hi '+ firstname +', your score is: ' + 100 * (((step1Value == qa.step1.correct) ? 1:0) + ((step2Value == qa.step2.correct) ? 1:0) + ((step3Value == qa.step3.correct) ? 1:0) + ((step4Value == qa.step4.correct) ? 1:0) + ((step5Value == qa.step5.correct) ? 1:0)) / 5 + '.'"></h2>
           <br />
           <button class="button-again" on="tap:
           step1.clear, step2.clear, step3.clear,
