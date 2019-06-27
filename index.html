@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>BHP Quiz</title>
   <link rel="canonical" href="https://29ae076c.ngrok.io/index.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!-- We use `amp-bind` to coordinate the page transitions... -->
@@ -12,11 +14,12 @@
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
   <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
+  <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
   <style amp-custom>
       :root {
-        --color-primary: #005AF0;
+        --color-primary: #2bbbad;
         --color-text-light: #fff;
         --color-text-dark: #000;
         --color-bg-light: #FAFAFC;
@@ -394,24 +397,31 @@
       </amp-state>
 
   <h2 class="preview-only">BHP QUIZ</h2>
-  <p>Zapraszamy do wypełnienia kursu BHP.</p>
+  <p [hidden]="currentPage > 0">Zapraszamy do wypełnienia kursu BHP.</p>
   <br>
   <br>
 
   <div class="stepper simple">
 
-      <section [hidden]="currentPage > 0">          
+      <section [hidden]="currentPage > 0">  
+      <amp-img src="assets/Questionnaire.png" height="200" width="400" layout="fixed" class="img"></amp-img>
+
           <div class="content">
-              <div>
-                <label for="ip1" aria-hidden="true">Podaj swoje imię: </label>
-                <input type="firstname" value="" name="firstname" autocomplete="firstname" id="id1"
-                          on="input-debounced: AMP.setState({ firstname: event.value })">                
-              </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input style="width:200%" value="" id="id1" type="text" 
+                        name="firstname" class="validate"
+                        on="input-debounced: AMP.setState({ firstname: event.value })"
+                        placeholder="Podaj imię">
+                    </div>
+                  </div>
 
               <br>
             <button on="tap:AMP.pushState({ currentPage: currentPage + 1 })"
-                    disabled [disabled]="!firstname">
-              start
+                    disabled [disabled]="!firstname"
+                    class="btn">
+              Start
             </button>
           </div>
         </section>
@@ -421,6 +431,7 @@
       <div class="top-bar">
         Pytanie 1
       </div>
+      <amp-img src="assets/1.jpg" height="200" width="400" layout="fixed" class="img"></amp-img>
       <div class="content">
         <p>Wodą nie gasi się:</p>
         <amp-selector id="step1" on="select:AMP.pushState({
@@ -431,9 +442,9 @@
           <div option="b">krzesła</div>
           <div option="c">stołu</div>
         </amp-selector>
-        <button disabled [disabled]="!step1Selected"
+        <button class="btn" disabled [disabled]="!step1Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
-          continue
+          Dalej
         </button>
       </div>
       <div class="bottom-bar">
@@ -453,6 +464,7 @@
       <div class="top-bar">
         Pytanie 2
       </div>
+      <amp-img src="assets/2.webp" height="200" width="400" layout="fixed" class="img"></amp-img>
       <div class="content">
         <p>Nad warunkami pracy w zakłądzie z ramienia pracodawcy sprawuje:</p>
         <amp-selector id="step2" on="select:AMP.setState({
@@ -462,9 +474,9 @@
           <div option="b">policja</div>
           <div option="c">służba bezpieczeństwa i higeny pracy</div>
         </amp-selector>
-        <button disabled [disabled]="!step2Selected"
+        <button class="btn" disabled [disabled]="!step2Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
-          continue
+          Dalej
         </button>
       </div>
       <div class="bottom-bar">
@@ -484,6 +496,14 @@
       <div class="top-bar">
         Pytanie 3
       </div>
+      <amp-video src="assets/3.webm" 
+          height="200" width="320" 
+          poster="assets/3.jpg" 
+          layout="fixed" loop autoplay>
+          <div fallback>
+              <p>Your browser doesn't support HTML5 video.</p>
+            </div>
+        </amp-video>
       <div class="content">
         <p>W wypadku ogłoszenia alarmu pożarowego prowadzący zajęcia powinien:</p>
         <amp-selector id="step3" on="select:AMP.setState({
@@ -493,9 +513,9 @@
           <div option="b">przesiąść się bliżej okna</div>
           <div option="c">kontynuować pracę</div>
         </amp-selector>
-        <button disabled [disabled]="!step3Selected"
+        <button class="btn" disabled [disabled]="!step3Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
-          continue
+          Dalej
         </button>
       </div>
       <div class="bottom-bar">
@@ -515,7 +535,8 @@
         <div class="top-bar">
           Pytanie 4
         </div>
-        <div class="content">
+      <amp-img src="assets/4.jpg" height="200" width="400" layout="fixed" class="img"></amp-img>
+      <div class="content">
           <p>Koc gaśniczy wykonany jest:</p>
           <amp-selector id="step4" on="select:AMP.setState({
             step4Selected: true,
@@ -524,9 +545,9 @@
             <div option="b">z włókna szklanego</div>
             <div option="c">z wełny</div>
           </amp-selector>
-          <button disabled [disabled]="!step4Selected"
+          <button class="btn" disabled [disabled]="!step4Selected"
                   on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
-            continue
+            Dalej
           </button>
         </div>
         <div class="bottom-bar">
@@ -546,6 +567,7 @@
           <div class="top-bar">
             Pytanie 5
           </div>
+          <amp-img src="assets/5.jpg" height="200" width="400" layout="fixed" class="img"></amp-img>
           <div class="content">
             <p>Kto ma prawo ustalić czy wypadek jest wypadkiem przy pracy (podczas zajęć)?</p>
             <amp-selector id="step5" on="select:AMP.setState({
@@ -556,9 +578,11 @@
               <div option="c">Twój przełożony</div>
             </amp-selector>
             <button disabled [disabled]="!step5Selected"
-                    on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
-              continue
-            </button>
+              on="tap:AMP.pushState({ currentPage: currentPage + 1 })"
+              class="btn waves-effect waves-light" type="submit" name="action">
+              Zakończ
+                <i class="material-icons right">send</i>
+              </button>
           </div>
           <div class="bottom-bar">
             <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
@@ -581,18 +605,17 @@
       <div class="content">
           <amp-img src="assets/exam.png" width="100px" height="100px" layout="fixed">
           </amp-img>
-          <h1 class="preview-only">Test results</h1>
-          <h2 [text]="'Hi '+ firstname +', your score is: ' + 100 * (((step1Value == qa.step1.correct) ? 1:0) + ((step2Value == qa.step2.correct) ? 1:0) + ((step3Value == qa.step3.correct) ? 1:0) + ((step4Value == qa.step4.correct) ? 1:0) + ((step5Value == qa.step5.correct) ? 1:0)) / 5 + '.'"></h2>
+          <h1 class="preview-only">Wynik</h1>
+          <h3 [text]="'Gratulacje '+ firstname +', twój wynik: ' + 100 * (((step1Value == qa.step1.correct) ? 1:0) + ((step2Value == qa.step2.correct) ? 1:0) + ((step3Value == qa.step3.correct) ? 1:0) + ((step4Value == qa.step4.correct) ? 1:0) + ((step5Value == qa.step5.correct) ? 1:0)) / 5 + '%.'"></h2>
           <br />
 
-          <button class="button-again" on="tap:
+          <button class="btn" on="tap:
           step1.clear, step2.clear, step3.clear, step4.clear, step5.clear,
           AMP.pushState({ 
             currentPage: 0
           })">Try again?</button>
           <br />
           <p class="bottom">Share your results:</p>
-          <p [text]="'Hello ' + qa.step1User">Hello World</p>
           <amp-social-share type="linkedin" width="60" height="44"
           data-param-text="Hello world"
           data-param-url="https://example.com/">
