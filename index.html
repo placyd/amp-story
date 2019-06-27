@@ -395,8 +395,6 @@
   <p>Use the browser back button to go to the previous view.</p>
 
   <div class="stepper simple">
-
-
     <section [hidden]="currentPage > 0">
       <div class="top-bar">
         Pytanie 1
@@ -486,8 +484,66 @@
       </div>
     </section>
 
-    
     <section hidden [hidden]="currentPage != 3">
+        <div class="top-bar">
+          Pytanie 4
+        </div>
+        <div class="content">
+          <p>What's your favorite color?</p>
+          <amp-selector id="step4" on="select:AMP.setState({
+            step4Selected: true,
+            step4Value: event.targetOption})" class="poll" name="color-poll">
+            <div option="blue">Blue</div>
+            <div option="green">Green</div>
+            <div option="yellow">Yellow</div>
+          </amp-selector>
+          <button disabled [disabled]="!step4Selected"
+                  on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
+            continue
+          </button>
+        </div>
+        <div class="bottom-bar">
+          <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
+          <div class="step-dots">
+            <i class="step-dot active"></i>
+            <i class="step-dot active"></i>
+            <i class="step-dot active"></i>
+            <i class="step-dot"></i>
+          </div>
+        </div>
+      </section>
+
+      <section hidden [hidden]="currentPage != 4">
+          <div class="top-bar">
+            Pytanie 5
+          </div>
+          <div class="content">
+            <p>What's your favorite color?</p>
+            <amp-selector id="step5" on="select:AMP.setState({
+              step5Selected: true,
+              step5Value: event.targetOption})" class="poll" name="color-poll">
+              <div option="blue">Blue</div>
+              <div option="green">Green</div>
+              <div option="yellow">Yellow</div>
+            </amp-selector>
+            <button disabled [disabled]="!step5Selected"
+                    on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
+              continue
+            </button>
+          </div>
+          <div class="bottom-bar">
+            <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
+            <div class="step-dots">
+              <i class="step-dot active"></i>
+              <i class="step-dot active"></i>
+              <i class="step-dot active"></i>
+              <i class="step-dot"></i>
+            </div>
+          </div>
+        </section>
+
+    
+    <section hidden [hidden]="currentPage != 5">
       <div class="top-bar">
         Wynik
       </div>
