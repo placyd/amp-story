@@ -384,41 +384,35 @@
     <amp-state id="qa">
         <script type="application/json">
           {
-            "step1": {
-              "correct": "cat"
-            }
+            "step1": { "correct": "a" },
+            "step2": { "correct": "c" },
+            "step3": { "correct": "a" },
+            "step4": { "correct": "b" },
+            "step5": { "correct": "b" }
           }
         </script>
       </amp-state>
 
-  <h2 class="preview-only">A simple mobile Stepper</h2>
-  <p>Use the browser back button to go to the previous view.</p>
+  <h2 class="preview-only">BHP QUIZ</h2>
+  <p>Zapraszamy do wypełnienia kursu BHP.</p>
+  <br>
+  <br>
 
   <div class="stepper simple">
 
       <section [hidden]="currentPage > 0">          
           <div class="content">
               <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-              <div>
-                <label for="ip1" aria-hidden="true">Enter your Name</label>
-                <input type="firstname" value="" name="firstname" autocomplete="firstname" id="id1" placeholder="Enter your Name"
+                <label for="ip1" aria-hidden="true">Podaj swoje imię: </label>
+                <input type="firstname" value="" name="firstname" autocomplete="firstname" id="id1"
                           on="input-debounced: AMP.setState({ firstname: event.value })">                
               </div>
 
+              <br>
             <button on="tap:AMP.pushState({ currentPage: currentPage + 1 })"
                     disabled [disabled]="!firstname">
-              continue
+              start
             </button>
-          </div>
-          <div class="bottom-bar">
-            <div class="step-dots">
-              <i class="step-dot active"></i>
-              <i class="step-dot"></i>
-              <i class="step-dot"></i>
-              <i class="step-dot"></i>
-            </div>
           </div>
         </section>
 
@@ -428,14 +422,14 @@
         Pytanie 1
       </div>
       <div class="content">
-        <p>What's your favorite animal?</p>
+        <p>Wodą nie gasi się:</p>
         <amp-selector id="step1" on="select:AMP.pushState({
           step1Selected: true,
           step1Value: event.targetOption
         })" class="poll" name="animal-poll">
-          <div option="cat">Cat</div>
-          <div option="dog">Dog</div>
-          <div option="horse">Horse</div>
+          <div option="a">telewizora</div>
+          <div option="b">krzesła</div>
+          <div option="c">stołu</div>
         </amp-selector>
         <button disabled [disabled]="!step1Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
@@ -445,6 +439,8 @@
       <div class="bottom-bar">
         <div class="step-dots">
           <i class="step-dot active"></i>
+          <i class="step-dot"></i>
+          <i class="step-dot"></i>
           <i class="step-dot"></i>
           <i class="step-dot"></i>
           <i class="step-dot"></i>
@@ -458,13 +454,13 @@
         Pytanie 2
       </div>
       <div class="content">
-        <p>What's your favorite color?</p>
+        <p>Nad warunkami pracy w zakłądzie z ramienia pracodawcy sprawuje:</p>
         <amp-selector id="step2" on="select:AMP.setState({
           step2Selected: true,
           step2Value: event.targetOption})" class="poll" name="color-poll">
-          <div option="blue">Blue</div>
-          <div option="green">Green</div>
-          <div option="yellow">Yellow</div>
+          <div option="a">straż pożarna</div>
+          <div option="b">policja</div>
+          <div option="c">służba bezpieczeństwa i higeny pracy</div>
         </amp-selector>
         <button disabled [disabled]="!step2Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
@@ -478,6 +474,8 @@
           <i class="step-dot active"></i>
           <i class="step-dot"></i>
           <i class="step-dot"></i>
+          <i class="step-dot"></i>
+          <i class="step-dot"></i>
         </div>
       </div>
     </section>
@@ -487,13 +485,13 @@
         Pytanie 3
       </div>
       <div class="content">
-        <p>What's your favorite color?</p>
+        <p>W wypadku ogłoszenia alarmu pożarowego prowadzący zajęcia powinien:</p>
         <amp-selector id="step3" on="select:AMP.setState({
           step3Selected: true,
           step3Value: event.targetOption})" class="poll" name="color-poll">
-          <div option="blue">Blue</div>
-          <div option="green">Green</div>
-          <div option="yellow">Yellow</div>
+          <div option="a">niezwłocznie przerwać zajęcia i skierować się do wyjścia ewakuacyjnego</div>
+          <div option="b">przesiąść się bliżej okna</div>
+          <div option="c">kontynuować pracę</div>
         </amp-selector>
         <button disabled [disabled]="!step3Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
@@ -507,6 +505,8 @@
           <i class="step-dot active"></i>
           <i class="step-dot active"></i>
           <i class="step-dot"></i>
+          <i class="step-dot"></i>
+          <i class="step-dot"></i>
         </div>
       </div>
     </section>
@@ -516,13 +516,13 @@
           Pytanie 4
         </div>
         <div class="content">
-          <p>What's your favorite color?</p>
+          <p>Koc gaśniczy wykonany jest:</p>
           <amp-selector id="step4" on="select:AMP.setState({
             step4Selected: true,
             step4Value: event.targetOption})" class="poll" name="color-poll">
-            <div option="blue">Blue</div>
-            <div option="green">Green</div>
-            <div option="yellow">Yellow</div>
+            <div option="a">z karbonu</div>
+            <div option="b">z włókna szklanego</div>
+            <div option="c">z wełny</div>
           </amp-selector>
           <button disabled [disabled]="!step4Selected"
                   on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
@@ -535,6 +535,8 @@
             <i class="step-dot active"></i>
             <i class="step-dot active"></i>
             <i class="step-dot active"></i>
+            <i class="step-dot active"></i>
+            <i class="step-dot"></i>
             <i class="step-dot"></i>
           </div>
         </div>
@@ -545,13 +547,13 @@
             Pytanie 5
           </div>
           <div class="content">
-            <p>What's your favorite color?</p>
+            <p>Kto ma prawo ustalić czy wypadek jest wypadkiem przy pracy (podczas zajęć)?</p>
             <amp-selector id="step5" on="select:AMP.setState({
               step5Selected: true,
               step5Value: event.targetOption})" class="poll" name="color-poll">
-              <div option="blue">Blue</div>
-              <div option="green">Green</div>
-              <div option="yellow">Yellow</div>
+              <div option="a">Twoja mama</div>
+              <div option="b">zespół powypadkowy</div>
+              <div option="c">Twój przełożony</div>
             </amp-selector>
             <button disabled [disabled]="!step5Selected"
                     on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
@@ -561,6 +563,8 @@
           <div class="bottom-bar">
             <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
             <div class="step-dots">
+              <i class="step-dot active"></i>
+              <i class="step-dot active"></i>
               <i class="step-dot active"></i>
               <i class="step-dot active"></i>
               <i class="step-dot active"></i>
@@ -580,8 +584,9 @@
           <h1 class="preview-only">Test results</h1>
           <h2 [text]="'Hi '+ firstname +', your score is: ' + 100 * (((step1Value == qa.step1.correct) ? 1:0) + ((step2Value == qa.step2.correct) ? 1:0) + ((step3Value == qa.step3.correct) ? 1:0) + ((step4Value == qa.step4.correct) ? 1:0) + ((step5Value == qa.step5.correct) ? 1:0)) / 5 + '.'"></h2>
           <br />
+
           <button class="button-again" on="tap:
-          step1.clear, step2.clear, step3.clear,
+          step1.clear, step2.clear, step3.clear, step4.clear, step5.clear,
           AMP.pushState({ 
             currentPage: 0
           })">Try again?</button>
@@ -603,12 +608,6 @@
       </div>
       <div class="bottom-bar">
         <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
-        <div class="step-dots">
-          <i class="step-dot active"></i>
-          <i class="step-dot active"></i>
-          <i class="step-dot active"></i>
-          <i class="step-dot active"></i>
-        </div>
       </div>
     </section>
   </div>
