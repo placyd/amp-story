@@ -150,18 +150,23 @@ h2.preview-only + p {
   <p>Use the browser back button to go to the previous view.</p>
 
   <div class="stepper simple">
+
+
     <section [hidden]="currentPage > 0">
       <div class="top-bar">
         Pytanie 1
       </div>
       <div class="content">
         <p>What's your favorite animal?</p>
-        <amp-selector on="select:AMP.setState({animalSelected: true})" class="poll" name="animal-poll">
+        <amp-selector on="select:AMP.setState({
+          step1Selected: true,
+          step1Value: event.targetOption
+        })" class="poll" name="animal-poll">
           <div option="cat">Cat</div>
           <div option="dog">Dog</div>
           <div option="horse">Horse</div>
         </amp-selector>
-        <button disabled [disabled]="!animalSelected"
+        <button disabled [disabled]="!step1Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
           continue
         </button>
@@ -175,18 +180,22 @@ h2.preview-only + p {
         </div>
       </div>
     </section>
+
+
     <section hidden [hidden]="currentPage != 1">
       <div class="top-bar">
         Pytanie 2
       </div>
       <div class="content">
         <p>What's your favorite color?</p>
-        <amp-selector on="select:AMP.setState({colorSelected: true})" class="poll" name="color-poll">
+        <amp-selector on="select:AMP.setState({
+          step2Selected: true,
+          step2Value: event.targetOption})" class="poll" name="color-poll">
           <div option="blue">Blue</div>
           <div option="green">Green</div>
           <div option="yellow">Yellow</div>
         </amp-selector>
-        <button disabled [disabled]="!colorSelected"
+        <button disabled [disabled]="!step2Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
           continue
         </button>
@@ -209,12 +218,14 @@ h2.preview-only + p {
       </div>
       <div class="content">
         <p>What's your favorite color?</p>
-        <amp-selector on="select:AMP.setState({colorSelected: true})" class="poll" name="color-poll">
+        <amp-selector on="select:AMP.setState({
+          step3Selected: true,
+          step3Value: event.targetOption})" class="poll" name="color-poll">
           <div option="blue">Blue</div>
           <div option="green">Green</div>
           <div option="yellow">Yellow</div>
         </amp-selector>
-        <button disabled [disabled]="!colorSelected"
+        <button disabled [disabled]="!step3Selected"
                 on="tap:AMP.pushState({ currentPage: currentPage + 1 })">
           continue
         </button>
@@ -235,7 +246,9 @@ h2.preview-only + p {
       <div class="top-bar">
         Step 3
       </div>
-      <div class="content">Done!</div>
+      <div class="content">
+        Done!
+      </div>
       <div class="bottom-bar">
         <button class="button-prev" on="tap:AMP.pushState({ currentPage: currentPage - 1 })">back</button>
         <div class="step-dots">
