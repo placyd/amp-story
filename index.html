@@ -52,10 +52,9 @@
         background-color: var(--color-bg-light);
       }
       .stepper.simple .content {
-        height: 350px;
-        display: inline-block;
         align-items: center;
         justify-content: center;
+        margin: 20px 5px;
       }
       .stepper.simple .top-bar,
       .stepper.simple .bottom-bar {
@@ -289,6 +288,9 @@
       .stepper.sliding .input > input:focus {
         outline: 0;
       }
+      p {
+        font-weight: bold;
+      }
       .stepper.sliding .input > label {
         position: absolute;
         top: 0;
@@ -323,6 +325,9 @@
           opacity: 1;
         }
       }
+      .btn {
+        margin: 20px;
+      }
       .stepper.sliding .input input:focus::-webkit-input-placeholder {
           opacity: 0;
       }
@@ -342,6 +347,7 @@
       amp-selector.poll [option] {
         display: flex;
         align-items: center;
+        text-align: left;
       }
       amp-selector.poll [option]:before {
         transition: background 0.25s ease-in-out;
@@ -408,9 +414,9 @@
 
           <div class="content">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field">
                       <i class="material-icons prefix">account_circle</i>
-                      <input style="width:200%" value="" id="id1" type="text" 
+                      <input style="width:80%" value="" id="id1" type="text" 
                         name="firstname" class="validate"
                         on="input-debounced: AMP.setState({ firstname: event.value })"
                         placeholder="Podaj imię">
@@ -599,13 +605,9 @@
 
     
     <section hidden [hidden]="currentPage != 6">
-      <div class="top-bar">
-        Wynik
-      </div>
       <div class="content">
           <amp-img src="assets/exam.png" width="100px" height="100px" layout="fixed">
           </amp-img>
-          <h1 class="preview-only">Wynik</h1>
           <h3 [text]="'Gratulacje '+ firstname +', twój wynik: ' + 100 * (((step1Value == qa.step1.correct) ? 1:0) + ((step2Value == qa.step2.correct) ? 1:0) + ((step3Value == qa.step3.correct) ? 1:0) + ((step4Value == qa.step4.correct) ? 1:0) + ((step5Value == qa.step5.correct) ? 1:0)) / 5 + '%.'"></h2>
           <br />
 
@@ -613,9 +615,9 @@
           step1.clear, step2.clear, step3.clear, step4.clear, step5.clear,
           AMP.pushState({ 
             currentPage: 0
-          })">Try again?</button>
+          })">Powtórz kurs</button>
           <br />
-          <p class="bottom">Share your results:</p>
+          <p class="bottom">Pochwal się wynikiem:</p>
           <amp-social-share type="linkedin" width="60" height="44"
           data-param-text="Hello world"
           data-param-url="https://example.com/">
